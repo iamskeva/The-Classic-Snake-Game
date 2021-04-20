@@ -13,6 +13,7 @@ class Snake:
         self.snake_list = []
         self.create_snake()
         self.head = self.snake_list[0]
+        self.move_speed = 0.1
 
     def create_snake(self):
         for position in STARTING_POSITION:
@@ -25,6 +26,14 @@ class Snake:
         snake.penup()
         snake.goto(position)
         self.snake_list.append(snake)
+
+    def reset(self):
+        for snake in self.snake_list:
+            snake.goto(x=1000, y=1000)
+        self.snake_list.clear()
+        self.create_snake()
+        self.head = self.snake_list[0]
+        self.move_speed = 0.1
 
     def extend(self):
         #extend the length of the snake
